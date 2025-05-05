@@ -1,7 +1,12 @@
-name: Create Dev Schemas
+name: Create Release Schemas
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: "ESPHome release tag"
+        required: true
+        type: string
 
 jobs:
   update-schemas:
@@ -11,7 +16,7 @@ jobs:
       - name: Checkout esphome-schema repo
         uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: release
           persist-credentials: true # important for push
 
       - name: Set up Python 3.9
@@ -22,9 +27,7 @@ jobs:
 
       - name: Clone ESPHome repository
         run: |
-          git clone --depth=1 --branch=dev https://github.com/esphome/esphome.git
-          cd esphome
-          echo "ESPHOME_COMMIT_MESSAGE=$(git log -1 --pretty=%s)" >> $GITHUB_ENV
+          git clone --depth=1 --branch=${{ inputs.tag }} https://github.com/esphome/esphome.git
 
       - name: Install ESPHome dependencies
         run: |
@@ -38,7 +41,7 @@ jobs:
 
       - name: Clone ESPHome docs repository
         run: |
-          git clone --depth=1 --branch=next https://github.com/esphome/esphome-docs.git
+          git clone --depth=1 --branch=${{ inputs.tag }} https://github.com/esphome/esphome-docs.git
 
       - name: Install ESPHome docs dependencies
         run: |
@@ -55,5 +58,7 @@ jobs:
           git config user.name "GitHub Action"
           git config user.email "actions@github.com"
           git add schema
-          git diff --cached --quiet || git commit -m "esphome: $ESPHOME_COMMIT_MESSAGE"
+          git diff --cached --quiet || git commit -m "Release ${{ inputs.tag }}"
           git push
+          git tag ${{ inputs.tag }}
+          git push --tags
