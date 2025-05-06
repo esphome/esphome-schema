@@ -24,7 +24,7 @@
               "default": "{}",
               "docs": "Override metric labels. See [relabel](https://esphome.io/components/prometheus.html#prometheus-relabel)\n\n*See also: [Prometheus Component](https://esphome.io/components/prometheus.html#configuration-variables)*",
               "key": "String",
-              "key_type": "<function use_id.<locals>.validator at 0x7f18a67a8670>",
+              "key_type": "<function use_id.<locals>.validator at 0x7f90406e7670>",
               "schema": {
                 "config_vars": {
                   "string": {
