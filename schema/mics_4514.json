@@ -13,8 +13,22 @@
               "docs": "All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor)\n\n*See also: [MiCS 4514 Gas Sensor](https://esphome.io/components/sensor/mics_4514.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "2"
+                  },
+                  "device_class": {
+                    "default": ""
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "ppm"
+                  }
+                },
                 "extends": [
-                  "mics_4514.sensor.common_sensor_schema"
+                  "sensor.SENSOR_SCHEMA"
                 ]
               },
               "type": "schema"
@@ -23,8 +37,22 @@
               "docs": "All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor)\n\n*See also: [MiCS 4514 Gas Sensor](https://esphome.io/components/sensor/mics_4514.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "2"
+                  },
+                  "device_class": {
+                    "default": "carbon_monoxide"
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "ppm"
+                  }
+                },
                 "extends": [
-                  "mics_4514.sensor.common_sensor_schema"
+                  "sensor.SENSOR_SCHEMA"
                 ]
               },
               "type": "schema"
@@ -33,8 +61,22 @@
               "docs": "All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor)\n\n*See also: [MiCS 4514 Gas Sensor](https://esphome.io/components/sensor/mics_4514.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "2"
+                  },
+                  "device_class": {
+                    "default": ""
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "ppm"
+                  }
+                },
                 "extends": [
-                  "mics_4514.sensor.common_sensor_schema"
+                  "sensor.SENSOR_SCHEMA"
                 ]
               },
               "type": "schema"
@@ -43,8 +85,22 @@
               "docs": "All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor)\n\n*See also: [MiCS 4514 Gas Sensor](https://esphome.io/components/sensor/mics_4514.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "2"
+                  },
+                  "device_class": {
+                    "default": ""
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "ppm"
+                  }
+                },
                 "extends": [
-                  "mics_4514.sensor.common_sensor_schema"
+                  "sensor.SENSOR_SCHEMA"
                 ]
               },
               "type": "schema"
@@ -69,8 +125,22 @@
               "docs": "All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor)\n\n*See also: [MiCS 4514 Gas Sensor](https://esphome.io/components/sensor/mics_4514.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "2"
+                  },
+                  "device_class": {
+                    "default": ""
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "ppm"
+                  }
+                },
                 "extends": [
-                  "mics_4514.sensor.common_sensor_schema"
+                  "sensor.SENSOR_SCHEMA"
                 ]
               },
               "type": "schema"
@@ -79,8 +149,22 @@
               "docs": "All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor)\n\n*See also: [MiCS 4514 Gas Sensor](https://esphome.io/components/sensor/mics_4514.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "2"
+                  },
+                  "device_class": {
+                    "default": ""
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "ppm"
+                  }
+                },
                 "extends": [
-                  "mics_4514.sensor.common_sensor_schema"
+                  "sensor.SENSOR_SCHEMA"
                 ]
               },
               "type": "schema"
@@ -93,25 +177,6 @@
           },
           "extends": [
             "core.COMPONENT_SCHEMA"
-          ]
-        },
-        "type": "schema"
-      },
-      "common_sensor_schema": {
-        "schema": {
-          "config_vars": {
-            "accuracy_decimals": {
-              "default": "2"
-            },
-            "state_class": {
-              "default": "measurement"
-            },
-            "unit_of_measurement": {
-              "default": "ppm"
-            }
-          },
-          "extends": [
-            "sensor.SENSOR_SCHEMA"
           ]
         },
         "type": "schema"
