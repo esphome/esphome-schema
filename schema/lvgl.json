@@ -323,7 +323,7 @@
             }
           },
           "extends": [
-            "text.TEXT_SCHEMA"
+            "text._TEXT_SCHEMA"
           ]
         },
         "type": "schema"

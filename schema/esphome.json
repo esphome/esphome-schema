@@ -1143,9 +1143,7 @@
       "light": {
         "docs": "In ESPHome, `light` components allow you to create lights usable from Home Assistant\u2019s frontend and have many features such as colors, transitions and even effects.\n\n*See also: [Light Component](https://esphome.io/components/light/index.html#light-component)*"
       },
-      "lock": {
-        "docs": "The `lock` domain includes all platforms that should function like a lock with lock/unlock actions.\n\n*See also: [Lock Component](https://esphome.io/components/lock/index.html#lock-component)*"
-      },
+      "lock": {},
       "media_player": {
         "docs": "The `media_player` domain includes all platforms that implement media player functionality.\n\n*See also: [Media Player Components](https://esphome.io/components/media_player/index.html#media-player-components)*"
       },
@@ -1176,9 +1174,7 @@
       "switch": {
         "docs": "The `switch` domain includes all platforms that should show up like a switch and can only be turned ON or OFF.\n\n*See also: [Switch Component](https://esphome.io/components/switch/index.html#switch-component)*"
       },
-      "text": {
-        "docs": "ESPHome has support for components to create a text entity. A text entity is like a `text_sensor` that can read a value from a device, but is useful when that value can be set by the user/frontend.\n\n*See also: [Text Component](https://esphome.io/components/text/index.html#text-component)*"
-      },
+      "text": {},
       "text_sensor": {
         "docs": "Text sensors are a lot like normal [sensors](https://esphome.io/components/sensor/index.html). But where the \u201cnormal\u201d sensors only represent sensors that output **numbers**, this component can represent any *text*.\n\n*See also: [Text Sensor Component](https://esphome.io/components/text_sensor/index.html#text-sensor-component)*"
       },
@@ -1188,12 +1184,8 @@
       "touchscreen": {
         "docs": "The `touchscreen` component contains the base code for most touchscreen driver components available in ESPHome and is responsible for passing the touch events to `binary_sensors` with the `touchscreen` platform. It is also used by the LVGL component.\n\n*See also: [Touchscreen Components](https://esphome.io/components/touchscreen/index.html#touchscreen-components)*"
       },
-      "update": {
-        "docs": "The `update` component allows your ESPHome devices to install updates from a remote source; instead of [\u201cpushing\u201d an update to your device](https://esphome.io/components/ota/index.html), the device can retrieve an update and install it on its own.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#update-core)*"
-      },
-      "valve": {
-        "docs": "The `valve` component is a generic representation of valves in ESPHome. A valve can (currently) either be *closed* or *open* and supports three commands: *open*, *close* and *stop*.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#valve-component)*"
-      }
+      "update": {},
+      "valve": {}
     },
     "schemas": {
       "COMPONENT_SCHEMA": {
@@ -1211,25 +1203,25 @@
           "config_vars": {
             "disabled_by_default": {
               "default": "False",
-              "docs": "**, boolean**: If true, this entity should not be added to any client\u2019s frontend, (usually Home Assistant) without the user manually enabling it (via the Home Assistant UI). Defaults to `false`.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
+              "docs": "**, boolean**: If true, then this entity should not be added to any client\u2019s frontend, (usually Home Assistant) without the user manually enabling it (via the Home Assistant UI). Defaults to `false`.\n\n*See also: [Text Sensor Component](https://esphome.io/components/text_sensor/index.html#base-text-sensor-configuration)*",
               "key": "Optional",
               "type": "boolean"
             },
             "entity_category": {
-              "docs": "**, string**: The category of the entity. See [https://developers.home-assistant.io/docs/core/entity/#generic-properties](https://developers.home-assistant.io/docs/core/entity/#generic-properties) for a list of available options. Set to `\"\"` to remove the default entity category.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
+              "docs": "**, string**: The category of the entity. See [https://developers.home-assistant.io/docs/core/entity/#generic-properties](https://developers.home-assistant.io/docs/core/entity/#generic-properties) for a list of available options. Set to `\"\"` to remove the default entity category.\n\n*See also: [Text Sensor Component](https://esphome.io/components/text_sensor/index.html#base-text-sensor-configuration)*",
               "key": "Optional"
             },
             "icon": {
-              "docs": "**, icon**: Manually set the icon to use for the valve in the frontend.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
+              "docs": "**, icon**: Manually set the icon to use for the sensor in the frontend.\n\n*See also: [Text Sensor Component](https://esphome.io/components/text_sensor/index.html#base-text-sensor-configuration)*",
               "key": "Optional"
             },
             "internal": {
-              "docs": "**, boolean**: Mark this component as internal. Internal components will not be exposed to the frontend (like Home Assistant). Only specifying an `id` without a `name` will implicitly set this to true.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
+              "docs": "**, boolean**: Mark this component as internal. Internal components will not be exposed to the frontend (like Home Assistant). Only specifying an `id` without a `name` will implicitly set this to true.\n\n*See also: [Text Sensor Component](https://esphome.io/components/text_sensor/index.html#base-text-sensor-configuration)*",
               "key": "Optional",
               "type": "boolean"
             },
             "name": {
-              "docs": "**, string**: The name for the valve. At least one of **id** and **name** must be specified.\n   > If you have a [friendly_name](https://esphome.io/components/esphome.html#esphome-configuration-variables) set for your device and you want the valve to use that name, you can set `name: None`.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
+              "docs": "**, string**: The name for the sensor. At least one of **id** and **name** must be specified.\n   > If you have a [friendly_name](https://esphome.io/components/esphome.html#esphome-configuration-variables) set for your device and you want the text sensor to use that name, you can set `name: None`.\n\n*See also: [Text Sensor Component](https://esphome.io/components/text_sensor/index.html#base-text-sensor-configuration)*",
               "key": "Optional"
             }
           }

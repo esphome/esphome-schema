@@ -363,7 +363,7 @@
           },
           "extends": [
             "core.COMPONENT_SCHEMA",
-            "update.UPDATE_SCHEMA"
+            "update._UPDATE_SCHEMA"
           ]
         },
         "type": "schema"

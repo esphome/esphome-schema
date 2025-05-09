@@ -42,11 +42,10 @@
         },
         "type": "schema"
       },
-      "TEXT_SCHEMA": {
+      "_TEXT_SCHEMA": {
         "schema": {
           "config_vars": {
             "id": {
-              "docs": "**, string**: Manually specify the ID for code generation. At least one of **id** and **name** must be specified.\n\n*See also: [Text Component](https://esphome.io/components/text/index.html#base-text-configuration)*",
               "id_type": {
                 "class": "text::Text",
                 "parents": [
@@ -56,7 +55,6 @@
               "key": "GeneratedID"
             },
             "mode": {
-              "docs": "**, string**: Defines how the text should be displayed in the frontend. One of `text` or `password`.\n\n*See also: [Text Component](https://esphome.io/components/text/index.html#base-text-configuration)*",
               "key": "Required",
               "type": "enum",
               "values": {
@@ -75,7 +73,6 @@
               "key": "Optional"
             },
             "on_value": {
-              "docs": "**, [Automation](https://esphome.io/automations/index.html#automation)**: An automation to perform when a new value is published. See [on_value](https://esphome.io/components/text/index.html#text-on-value).\n\n*See also: [Text Component](https://esphome.io/components/text/index.html#base-text-configuration)*",
               "key": "Optional",
               "type": "trigger"
             },

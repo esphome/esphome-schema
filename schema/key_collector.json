@@ -1,5 +1,35 @@
 {
   "key_collector": {
+    "action": {
+      "disable": {
+        "docs": "This action deactivates a `key_collector`.  It will stop accepting keys and will clear any already collected ones. If there is more than one key collector, you will need to provide the `id` of the one to disable.\n\n*See also: [`key_collector.disable` Action](https://esphome.io/components/key_collector.html#key-collector-disable-action)*",
+        "maybe": "id",
+        "schema": {
+          "config_vars": {
+            "id": {
+              "key": "GeneratedID",
+              "type": "use_id",
+              "use_id_type": "key_collector::KeyCollector"
+            }
+          }
+        },
+        "type": "schema"
+      },
+      "enable": {
+        "docs": "This action activates a `key_collector`.  It will start accepting keys. If there is more than one key collector, you will need to provide the `id` of the one to enable.\n\n*See also: [`key_collector.enable` Action](https://esphome.io/components/key_collector.html#key-collector-enable-action)*",
+        "maybe": "id",
+        "schema": {
+          "config_vars": {
+            "id": {
+              "key": "GeneratedID",
+              "type": "use_id",
+              "use_id_type": "key_collector::KeyCollector"
+            }
+          }
+        },
+        "type": "schema"
+      }
+    },
     "schemas": {
       "CONFIG_SCHEMA": {
         "is_list": true,
@@ -19,6 +49,12 @@
               "docs": "**, string**: Keys used to entirely clear the sequence, all the pressed keys.\n\n*See also: [Component](https://esphome.io/components/key_collector.html#component)*",
               "key": "Optional",
               "type": "string"
+            },
+            "enable_on_boot": {
+              "default": "True",
+              "docs": "**, boolean**: If enabled, this key collector will be enabled on boot. Defaults to `true`.\n\n*See also: [Component](https://esphome.io/components/key_collector.html#component)*",
+              "key": "Optional",
+              "type": "boolean"
             },
             "end_key_required": {
               "docs": "**, boolean**: Only trigger `on_result` automation when one of the `end_keys` was pressed. Defaults to `false`.\n\n*See also: [Component](https://esphome.io/components/key_collector.html#component)*",

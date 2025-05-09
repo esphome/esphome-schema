@@ -356,7 +356,7 @@
           },
           "extends": [
             "core.COMPONENT_SCHEMA",
-            "lock.LOCK_SCHEMA"
+            "lock._LOCK_SCHEMA"
           ]
         },
         "type": "schema"

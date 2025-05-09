@@ -46,7 +46,6 @@
               "use_id_type": "esp32_ble::ESP32BLE"
             },
             "id": {
-              "docs": "**, [ID](https://esphome.io/guides/configuration-types.html#config-id)**: Manually specify the ID for this ESP32 BLE Hub.\n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
               "id_type": {
                 "class": "esp32_ble_tracker::ESP32BLETracker",
                 "parents": [
@@ -62,12 +61,10 @@
             "max_connections": {
               "data_type": "positive_int",
               "default": "3",
-              "docs": "**, int**: The maximum number of BLE connection slots to use. Each configured slot consumes ~1KB of RAM. It is recommended not to exceed `5` connection slots to avoid memory issues. Defaults to `3`. This can only be adjusted when using the `esp-idf` framework up to a maximum of `9`. This value cannot exceed the total number of `connection_slots` for the [Bluetooth Proxy](https://esphome.io/components/bluetooth_proxy.html) component combined with the total configured [BLE Client](https://esphome.io/components/ble_client.html) instances.\n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
               "key": "Optional",
               "type": "integer"
             },
             "on_ble_advertise": {
-              "docs": "**, [Automation](https://esphome.io/automations/index.html#automation)**: An automation to perform when a Bluetooth advertising is received. See [on_ble_advertise Trigger](https://esphome.io/components/esp32_ble_tracker.html#esp32-ble-tracker-on-ble-advertise).\n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
                 "config_vars": {
@@ -84,7 +81,6 @@
               "type": "trigger"
             },
             "on_ble_manufacturer_data_advertise": {
-              "docs": "**, [Automation](https://esphome.io/automations/index.html#automation)**: An automation to perform when a Bluetooth advertising with manufacturer data is received. See [on_ble_manufacturer_data_advertise Trigger](https://esphome.io/components/esp32_ble_tracker.html#esp32-ble-tracker-on-ble-manufacturer-data-advertise).\n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
               "has_required_var": true,
               "key": "Optional",
               "schema": {
@@ -105,7 +101,6 @@
               "type": "trigger"
             },
             "on_ble_service_data_advertise": {
-              "docs": "**, [Automation](https://esphome.io/automations/index.html#automation)**: An automation to perform when a Bluetooth advertising with service data is received. See [on_ble_service_data_advertise Trigger](https://esphome.io/components/esp32_ble_tracker.html#esp32-ble-tracker-on-ble-service-data-advertise).\n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
               "has_required_var": true,
               "key": "Optional",
               "schema": {
@@ -126,13 +121,12 @@
               "type": "trigger"
             },
             "on_scan_end": {
-              "docs": "**, [Automation](https://esphome.io/automations/index.html#automation)**: An automation to perform when a BLE scan has completed (the duration of the scan). This works with continuous set to true or false.\n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
               "key": "Optional",
               "type": "trigger"
             },
             "scan_parameters": {
               "default": "{}",
-              "docs": "Advanced parameters for configuring the scan behavior of the ESP32. See also [this guide by Texas Instruments](https://dev.ti.com/tirex/explore/content/simplelink_academy_cc2640r2sdk_5_10_02_00/modules/blestack/ble_scan_adv_basic/ble_scan_adv_basic.html#scanning-basics) for reference.\n  * **interval** (*Optional*, [Time](https://esphome.io/guides/configuration-types.html#config-time)): The interval between each consecutive scan window. This is the time the ESP spends on each of the 3 BLE advertising channels. Defaults to `320ms`.\n  \n  * **window** (*Optional*, [Time](https://esphome.io/guides/configuration-types.html#config-time)): The time the ESP is actively listening for packets on a channel during each scan interval. If this is close to the `interval` value, the ESP will spend more time listening to packets (but also consume more power). Defaults to `30ms`\n  \n  * **duration** (*Optional*, [Time](https://esphome.io/guides/configuration-types.html#config-time)): The duration of each complete scan. This has no real impact on the device but can be used to debug the BLE stack. Defaults to `5min`.\n  \n  * **active** (*Optional*, boolean): Whether to actively send scan requests to request more data after having received an advertising packet. With some devices this is necessary to receive all data, but also drains those devices\u2019 power a bit more. Some devices don\u2019t need this, in that case you can save power and RF pollution by setting it to `false`. Defaults to `true`.\n  \n  * **continuous** (*Optional*, boolean): Whether to scan continuously (forever) or to only scan when asked to start a scan (with start_scan action). Defaults to `true`.\n  \n  \n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
+              "docs": "Advanced parameters for configuring the scan behavior of the ESP32. See also [this guide by Texas Instruments](https://dev.ti.com/tirex/explore/content/simplelink_academy_cc2640r2sdk_5_10_02_00/modules/blestack/ble_scan_adv_basic/ble_scan_adv_basic.html#scanning-basics) for reference.\n  * **interval** (*Optional*, [Time](https://esphome.io/guides/configuration-types.html#config-time)): The interval between each consecutive scan window. This is the time the ESP spends on each of the 3 BLE advertising channels. Defaults to `320ms`.\n  \n  * **window** (*Optional*, [Time](https://esphome.io/guides/configuration-types.html#config-time)): The time the ESP is actively listening for packets on a channel during each scan interval. If this is close to the `interval` value, the ESP will spend more time listening to packets (but also consume more power). Defaults to `30ms`\n  \n  * **duration** (*Optional*, [Time](https://esphome.io/guides/configuration-types.html#config-time)): The duration of each complete scan. This has no real impact on the device but can be used to debug the BLE stack. Defaults to `5min`.\n  \n  * **active** (*Optional*, boolean): Whether to actively send scan requests to request more data after having received an advertising packet. With some devices this is necessary to receive all data, but also drains those devices\u2019 power a bit more. Some devices don\u2019t need this, in that case you can save power and RF pollution by setting it to `false`. Defaults to `true`.\n  \n  * **continuous** (*Optional*, boolean): Whether to scan continuously (forever) or to only scan when asked to start a scan (with start_scan action). Defaults to `true`.\n  \n  * **software_coexistence** (*Optional*, boolean): When enabled, software coexistence will briefly prioritize Bluetooth over Wi-Fi during the initial establishment of BLE connections, which can improve reliability. Only available if `wifi` component is configured. Defaults to `true`.\n  \n  \n\n*See also: [ESP32 Bluetooth Low Energy Tracker Hub](https://esphome.io/components/esp32_ble_tracker.html#configuration-variables)*",
               "key": "Optional",
               "schema": {
                 "config_vars": {
@@ -184,6 +178,9 @@
                 }
               },
               "type": "schema"
+            },
+            "software_coexistence": {
+              "key": "Optional"
             }
           },
           "extends": [

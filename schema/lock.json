@@ -62,7 +62,7 @@
         "schema": {
           "config_vars": {
             "id": {
-              "key": "Required",
+              "key": "GeneratedID",
               "type": "use_id",
               "use_id_type": "lock::Lock"
             }
@@ -70,12 +70,9 @@
         },
         "type": "schema"
       },
-      "LOCK_SCHEMA": {
+      "_LOCK_SCHEMA": {
         "schema": {
           "config_vars": {
-            "id": {
-              "docs": "**, string**: Manually specify the ID for code generation. At least one of **id** and **name** must be specified.\n\n*See also: [Lock Component](https://esphome.io/components/lock/index.html#base-lock-configuration)*"
-            },
             "mqtt_id": {
               "id_type": {
                 "class": "mqtt::MQTTLockComponent",
@@ -87,12 +84,10 @@
               "key": "Optional"
             },
             "on_lock": {
-              "docs": "**, [Action](https://esphome.io/automations/actions.html#config-action)**: An automation to perform when the lock is locked. See [lock.on_lock / lock.on_unlock Trigger](https://esphome.io/components/lock/index.html#lock-on-lock-unlock-trigger).\n\n*See also: [Lock Component](https://esphome.io/components/lock/index.html#base-lock-configuration)*",
               "key": "Optional",
               "type": "trigger"
             },
             "on_unlock": {
-              "docs": "**, [Action](https://esphome.io/automations/actions.html#config-action)**: An automation to perform when the lock is unlocked. See [lock.on_lock / lock.on_unlock Trigger](https://esphome.io/components/lock/index.html#lock-on-lock-unlock-trigger)..\n\n*See also: [Lock Component](https://esphome.io/components/lock/index.html#base-lock-configuration)*",
               "key": "Optional",
               "type": "trigger"
             },

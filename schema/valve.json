@@ -100,11 +100,10 @@
         },
         "type": "schema"
       },
-      "VALVE_SCHEMA": {
+      "_VALVE_SCHEMA": {
         "schema": {
           "config_vars": {
             "device_class": {
-              "docs": "**, string**: The device class for the sensor. See [https://www.home-assistant.io/components/valve/](https://www.home-assistant.io/components/valve/) for a list of available options.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
               "key": "Optional",
               "type": "enum",
               "values": {
@@ -114,7 +113,6 @@
               }
             },
             "id": {
-              "docs": "**, string**: Manually specify the ID for code generation. At least one of **id** and **name** must be specified.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
               "id_type": {
                 "class": "valve::Valve",
                 "parents": [
@@ -142,11 +140,9 @@
               "type": "trigger"
             },
             "position_command_topic": {
-              "docs": "**, string**: The topic to receive valve position commands on.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
               "key": "Optional"
             },
             "position_state_topic": {
-              "docs": "**, string**: The topic to publish valve position changes to.\n\n*See also: [Valve Component](https://esphome.io/components/valve/index.html#base-valve-configuration)*",
               "key": "Optional"
             },
             "web_server": {

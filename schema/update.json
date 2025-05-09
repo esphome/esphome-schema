@@ -2,19 +2,16 @@
   "update": {
     "action": {
       "perform": {
-        "docs": "This action allows you to trigger the update entity to start the update process.\n\n*See also: [`update.perform` Action](https://esphome.io/components/update/index.html#update-perform-action)*",
         "maybe": "id",
         "schema": {
           "config_vars": {
             "force_update": {
               "default": "False",
-              "docs": "**, boolean**: Perform the update even if the device is already running the same version. Defaults to `false`.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#update-perform-action)*",
               "key": "Optional",
               "templatable": true,
               "type": "boolean"
             },
             "id": {
-              "docs": "**, [ID](https://esphome.io/guides/configuration-types.html#config-id)**: The ID of the update entity.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#update-perform-action)*",
               "key": "GeneratedID",
               "type": "use_id",
               "use_id_type": "update::UpdateEntity"
@@ -34,12 +31,10 @@
     },
     "condition": {
       "is_available": {
-        "docs": "This condition checks if an update is available for the device.\n\n*See also: [`update.is_available` Condition](https://esphome.io/components/update/index.html#update-is-available-condition)*",
         "maybe": "id",
         "schema": {
           "config_vars": {
             "id": {
-              "docs": "**, [ID](https://esphome.io/guides/configuration-types.html#config-id)**: The ID of the update entity.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#update-is-available-condition)*",
               "key": "GeneratedID",
               "type": "use_id",
               "use_id_type": "update::UpdateEntity"
@@ -50,11 +45,10 @@
       }
     },
     "schemas": {
-      "UPDATE_SCHEMA": {
+      "_UPDATE_SCHEMA": {
         "schema": {
           "config_vars": {
             "device_class": {
-              "docs": "**, string**: The device class for the update entity. See [https://www.home-assistant.io/integrations/binary_sensor/#device-class](https://www.home-assistant.io/integrations/binary_sensor/#device-class) for a list of available options.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#configuration-variables)*",
               "key": "Optional",
               "type": "enum",
               "values": {
@@ -63,11 +57,7 @@
               }
             },
             "entity_category": {
-              "default": "config",
-              "docs": "**, string**: The category of the update entity. See [https://developers.home-assistant.io/docs/core/entity/#generic-properties](https://developers.home-assistant.io/docs/core/entity/#generic-properties) for a list of available options.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#configuration-variables)*"
-            },
-            "id": {
-              "docs": "**, [ID](https://esphome.io/guides/configuration-types.html#config-id)**: Manually specify the ID used for code generation. At least one of **id** and **name** must be specified.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#configuration-variables)*"
+              "default": "config"
             },
             "mqtt_id": {
               "id_type": {
@@ -80,7 +70,6 @@
               "key": "Optional"
             },
             "on_update_available": {
-              "docs": "**, [Action](https://esphome.io/automations/actions.html#config-action)**: An automation to perform when an update is available.\n\n*See also: [Update Core](https://esphome.io/components/update/index.html#configuration-variables)*",
               "key": "Optional",
               "type": "trigger"
             },

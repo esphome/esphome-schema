@@ -144,7 +144,7 @@
           },
           "extends": [
             "core.COMPONENT_SCHEMA",
-            "lock.LOCK_SCHEMA"
+            "lock._LOCK_SCHEMA"
           ]
         },
         "type": "schema"
@@ -310,7 +310,7 @@
           },
           "extends": [
             "core.COMPONENT_SCHEMA",
-            "text.TEXT_SCHEMA"
+            "text._TEXT_SCHEMA"
           ]
         },
         "type": "schema"

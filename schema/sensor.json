@@ -174,7 +174,7 @@
         "dependencies": [
           "uart"
         ],
-        "docs": "This page is incomplete and could some work. If you want to contribute, please read the [contributing guide](https://esphome.io/guides/contributing.html). This page is missing:\n\n*See also: [Belling BL0940 Energy Monitor](https://esphome.io/components/sensor/bl0940.html#belling-bl0940-energy-monitor)*"
+        "docs": "This page is incomplete and could some work. If you want to contribute, please see our [developer site](https://developers.esphome.io). This page is missing:\n\n*See also: [Belling BL0940 Energy Monitor](https://esphome.io/components/sensor/bl0940.html#belling-bl0940-energy-monitor)*"
       },
       "bl0942": {
         "dependencies": [
@@ -589,7 +589,7 @@
         "docs": "The `ld2410` sensor allows you to use your [LD2410 Sensor to perform different measurements.\n\n*See also: [ld2410 Sensor](https://esphome.io/components/sensor/ld2410.html#sensor)*"
       },
       "ld2420": {
-        "docs": "The `ld2420` sensor platform allows you to use the HLK-LD2420 motion and presence sensor. The [UART](https://esphome.io/components/uart.html#uart) is required to be set up in your configuration for this sensor to work.\n\n*See also: [LD2420 24Ghz mmWave Radar Sensor](https://esphome.io/components/sensor/ld2420.html#ld2420-24ghz-mmwave-radar-sensor)*"
+        "docs": "The `ld2420` sensor platform allows you to use the HLK-LD2420 motion and presence sensor. The [UART](https://esphome.io/components/uart.html#uart) is required to be set up in your configuration for this sensor to work.\n\n*See also: [LD2420 24GHz mmWave Radar Sensor](https://esphome.io/components/sensor/ld2420.html#ld2420-24ghz-mmwave-radar-sensor)*"
       },
       "ld2450": {
         "dependencies": [
@@ -862,13 +862,13 @@
         "dependencies": [
           "uart"
         ],
-        "docs": "This page is incomplete and could use some work. If you want to contribute, please read the [contributing guide](https://esphome.io/guides/contributing.html). This page is missing:\n\n*See also: [Peacefair PZEM-004T Energy Monitor](https://esphome.io/components/sensor/pzem004t.html#peacefair-pzem-004t-energy-monitor)*"
+        "docs": "This page is incomplete and could use some work. If you want to contribute, please see our [developer site](https://developers.esphome.io). This page is missing:\n\n*See also: [Peacefair PZEM-004T Energy Monitor](https://esphome.io/components/sensor/pzem004t.html#peacefair-pzem-004t-energy-monitor)*"
       },
       "pzemac": {
-        "docs": "This page is incomplete and could use some work. If you want to contribute, please read the [contributing guide](https://esphome.io/guides/contributing.html). This page is missing:\n\n*See also: [Peacefair PZEM-004T V3 Energy Monitor](https://esphome.io/components/sensor/pzemac.html#peacefair-pzem-004t-v3-energy-monitor)*"
+        "docs": "This page is incomplete and could use some work. If you want to contribute, please see our [developer site](https://developers.esphome.io). This page is missing:\n\n*See also: [Peacefair PZEM-004T V3 Energy Monitor](https://esphome.io/components/sensor/pzemac.html#peacefair-pzem-004t-v3-energy-monitor)*"
       },
       "pzemdc": {
-        "docs": "This page is incomplete and could use some work. If you want to contribute, please read the [contributing guide](https://esphome.io/guides/contributing.html). This page is missing:\n\n*See also: [Peacefair PZEM-00X DC Energy Monitor](https://esphome.io/components/sensor/pzemdc.html#peacefair-pzem-00x-dc-energy-monitor)*"
+        "docs": "This page is incomplete and could use some work. If you want to contribute, please see our [developer site](https://developers.esphome.io). This page is missing:\n\n*See also: [Peacefair PZEM-00X DC Energy Monitor](https://esphome.io/components/sensor/pzemdc.html#peacefair-pzem-00x-dc-energy-monitor)*"
       },
       "qmc5883l": {
         "dependencies": [
@@ -909,7 +909,7 @@
         "dependencies": [
           "i2c"
         ],
-        "docs": "The `scd4x` sensor platform  allows you to use your Sensirion SCD4X CO\u2082 ([datasheet](https://sensirion.com/media/documents/48C4B7FB/66E05452/CD_DS_SCD4x_Datasheet_D1.pdf)) sensors with ESPHome. The [I\u00b2C Bus](https://esphome.io/components/i2c.html#i2c) is required to be set up in your configuration for this sensor to work.\n\n*See also: [SCD4X CO\u2082, Temperature and Relative Humidity Sensor](https://esphome.io/components/sensor/scd4x.html#scd4x-co2-temperature-and-relative-humidity-sensor)*"
+        "docs": "The `scd4x` sensor platform  allows you to use your Sensirion SCD4X CO\u2082 ([datasheet](https://sensirion.com/media/documents/48C4B7FB/67FE0194/CD_DS_SCD4x_Datasheet_D1.pdf)) sensors with ESPHome. The [I\u00b2C Bus](https://esphome.io/components/i2c.html#i2c) is required to be set up in your configuration for this sensor to work.\n\n*See also: [SCD4X CO\u2082, Temperature and Relative Humidity Sensor](https://esphome.io/components/sensor/scd4x.html#scd4x-co2-temperature-and-relative-humidity-sensor)*"
       },
       "sdm_meter": {
         "docs": "The `sdm_meter` sensor platform allows you to use Eastron SDM modbus energy monitors ([website](http://www.eastrongroup.com/product_detail.php?id=170&menu1=&menu2=)) with ESPHome.\n\n*See also: [Eastron SDM Energy Monitor](https://esphome.io/components/sensor/sdm_meter.html#eastron-sdm-energy-monitor)*"
@@ -1320,7 +1320,7 @@
         "type": "schema"
       },
       "calibrate_polynomial": {
-        "docs": "Calibrate your sensor values by fitting them to a polynomial functions. This is similar to the `calibrate_linear` filter, but also allows for higher-order functions like quadratic polynomials.\n\n*See also: [`calibrate_polynomial`](https://esphome.io/components/sensor/index.html#calibrate-polynomial)*",
+        "docs": "Calibrate your sensor values by fitting them to polynomial functions. This is similar to the `calibrate_linear` filter, but also allows for higher-order functions like quadratic polynomials.\n\n*See also: [`calibrate_polynomial`](https://esphome.io/components/sensor/index.html#calibrate-polynomial)*",
         "schema": {
           "config_vars": {
             "datapoints": {
@@ -1373,7 +1373,7 @@
         "type": "schema"
       },
       "filter_out": {
-        "docs": "**, number**: Filter out specific values to be displayed. For example to filter out the value `85.0`\n\n*See also: [`filter_out`](https://esphome.io/components/sensor/index.html#filter-out)*",
+        "docs": "**, number**: Filter out specific values to be displayed, e.g., filtering out the value `85.0`\n\n*See also: [`filter_out`](https://esphome.io/components/sensor/index.html#filter-out)*",
         "templatable": true
       },
       "heartbeat": {

@@ -141,6 +141,9 @@
       }
     },
     "components": {
+      "atm90e32": {
+        "docs": "`number` entities can be configured to provide calibration voltage & current reference values at runtime.\n\n*See also: [atm90e32 Number](https://esphome.io/components/sensor/atm90e32.html#number)*"
+      },
       "copy": {},
       "homeassistant": {
         "dependencies": [

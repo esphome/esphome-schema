@@ -1,6 +1,9 @@
 {
   "text_sensor": {
     "components": {
+      "atm90e32": {
+        "docs": "Configuration variables:\n\n*See also: [atm90e32 Text Sensor](https://esphome.io/components/sensor/atm90e32.html#text-sensor)*"
+      },
       "ble_client": {
         "dependencies": [
           "ble_client"
