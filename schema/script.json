@@ -6,7 +6,7 @@
         "maybe": "id",
         "schema": {
           "config_vars": {
-            "<function validate_parameter_name at 0x7f189e75c310>": {
+            "<function validate_parameter_name at 0x7f1731178160>": {
               "key": "Optional",
               "templatable": true
             },

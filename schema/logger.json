@@ -7383,6 +7383,18 @@
                       "WARN": null
                     }
                   },
+                  "sound_level": {
+                    "type": "enum",
+                    "values": {
+                      "DEBUG": null,
+                      "ERROR": null,
+                      "INFO": null,
+                      "NONE": null,
+                      "VERBOSE": null,
+                      "VERY_VERBOSE": null,
+                      "WARN": null
+                    }
+                  },
                   "speaker_media_player": {
                     "type": "enum",
                     "values": {

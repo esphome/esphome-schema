@@ -1020,6 +1020,12 @@
         ],
         "docs": "The SMT100 sensor platform allows you to use the SMT100 soil moisture and temperature with ESPHome.\n\n*See also: [SMT100 Soil Moisture Sensor](https://esphome.io/components/sensor/smt100.html#smt100-soil-moisture-sensor)*"
       },
+      "sound_level": {
+        "dependencies": [
+          "microphone"
+        ],
+        "docs": "The `sound_level` sensor platform allows you to measure a [microphone](https://esphome.io/components/microphone/index.html)\u2019s average and peak sound pressure levels over a specified measurement duration. The sensors output in **relative** `dB`, where `0 dB` represents the loudest sound the microphone can measure.\n\n*See also: [Sound Level Sensor](https://esphome.io/components/sensor/sound_level.html#sound-level-sensor)*"
+      },
       "sps30": {
         "dependencies": [
           "i2c"

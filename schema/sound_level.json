@@ -1,0 +1,162 @@
+{
+  "sound_level": {
+    "action": {
+      "start": {
+        "docs": "Starts measuring sound levels. Does nothing in passive mode.\n\n*See also: [`sound_level.start` Action](https://esphome.io/components/sensor/sound_level.html#sound-level-start-action)*",
+        "schema": {
+          "extends": [
+            "sound_level.sensor.SOUND_LEVEL_ACTION_SCHEMA"
+          ]
+        },
+        "type": "schema"
+      },
+      "stop": {
+        "docs": "Stops measuring sound levels. Does nothing in passive mode.\n\n*See also: [`sound_level.stop` Action](https://esphome.io/components/sensor/sound_level.html#sound-level-stop-action)*",
+        "schema": {
+          "extends": [
+            "sound_level.sensor.SOUND_LEVEL_ACTION_SCHEMA"
+          ]
+        },
+        "type": "schema"
+      }
+    }
+  },
+  "sound_level.sensor": {
+    "schemas": {
+      "CONFIG_SCHEMA": {
+        "schema": {
+          "config_vars": {
+            "id": {
+              "id_type": {
+                "class": "sound_level::SoundLevelComponent",
+                "parents": [
+                  "Component"
+                ]
+              },
+              "key": "GeneratedID"
+            },
+            "measurement_duration": {
+              "default": "1000ms",
+              "docs": "**, [Time](https://esphome.io/guides/configuration-types.html#config-time)**: The time duration for each sound level measurement. Ranges from `50ms` to `60s`. Defaults to `1000ms`.\n\n*See also: [Sound Level Sensor](https://esphome.io/components/sensor/sound_level.html#configuration-variables)*",
+              "key": "Optional",
+              "schema": {
+                "extends": [
+                  "core.positive_time_period_milliseconds"
+                ]
+              },
+              "type": "schema"
+            },
+            "microphone": {
+              "default": "{}",
+              "docs": "**, [Microphone Source Configuration](https://esphome.io/components/microphone/index.html#config-microphone-source)**: The [microphone](https://esphome.io/components/microphone/index.html) settings to use for input. Multiple channels may be selected.\n\n*See also: [Sound Level Sensor](https://esphome.io/components/sensor/sound_level.html#configuration-variables)*",
+              "key": "Optional",
+              "maybe": "microphone",
+              "schema": {
+                "config_vars": {
+                  "bits_per_sample": {
+                    "default": "16",
+                    "key": "Optional",
+                    "type": "integer"
+                  },
+                  "channels": {
+                    "default": "0",
+                    "is_list": true,
+                    "key": "Optional",
+                    "type": "integer"
+                  },
+                  "gain_factor": {
+                    "default": "1",
+                    "key": "Optional",
+                    "type": "integer"
+                  },
+                  "id": {
+                    "id_type": {
+                      "class": "microphone::MicrophoneSource",
+                      "parents": []
+                    },
+                    "key": "GeneratedID"
+                  },
+                  "microphone": {
+                    "key": "GeneratedID",
+                    "type": "use_id",
+                    "use_id_type": "microphone::Microphone"
+                  }
+                }
+              },
+              "type": "schema"
+            },
+            "passive": {
+              "key": "Required",
+              "type": "boolean"
+            },
+            "peak": {
+              "docs": "The information for the peak loudness sensor.\n  * All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor).\n  \n  \n\n*See also: [Sound Level Sensor](https://esphome.io/components/sensor/sound_level.html#configuration-variables)*",
+              "key": "Optional",
+              "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "1"
+                  },
+                  "device_class": {
+                    "default": "sound_pressure"
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "dB"
+                  }
+                },
+                "extends": [
+                  "sensor.SENSOR_SCHEMA"
+                ]
+              },
+              "type": "schema"
+            },
+            "rms": {
+              "docs": "The information for the Root Mean Square loudness sensor.\n  * All options from [Sensor](https://esphome.io/components/sensor/index.html#config-sensor).\n  \n  \n\n*See also: [Sound Level Sensor](https://esphome.io/components/sensor/sound_level.html#configuration-variables)*",
+              "key": "Optional",
+              "schema": {
+                "config_vars": {
+                  "accuracy_decimals": {
+                    "default": "1"
+                  },
+                  "device_class": {
+                    "default": "sound_pressure"
+                  },
+                  "state_class": {
+                    "default": "measurement"
+                  },
+                  "unit_of_measurement": {
+                    "default": "dB"
+                  }
+                },
+                "extends": [
+                  "sensor.SENSOR_SCHEMA"
+                ]
+              },
+              "type": "schema"
+            }
+          },
+          "extends": [
+            "core.COMPONENT_SCHEMA"
+          ]
+        },
+        "type": "schema"
+      },
+      "SOUND_LEVEL_ACTION_SCHEMA": {
+        "maybe": "id",
+        "schema": {
+          "config_vars": {
+            "id": {
+              "key": "GeneratedID",
+              "type": "use_id",
+              "use_id_type": "sound_level::SoundLevelComponent"
+            }
+          }
+        },
+        "type": "schema"
+      }
+    }
+  }
+}

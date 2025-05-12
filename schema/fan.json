@@ -150,6 +150,14 @@
       "FAN_SCHEMA": {
         "schema": {
           "config_vars": {
+            "direction_command_topic": {
+              "docs": "**, string**: The topic to receive fan direction commands on (options: forward, reverse, toggle).\n\n*See also: [Fan Component](https://esphome.io/components/fan/index.html#base-fan-configuration)*",
+              "key": "Optional"
+            },
+            "direction_state_topic": {
+              "docs": "**, string**: The topic to publish fan direction state changes to (options: forward, reverse).\n\n*See also: [Fan Component](https://esphome.io/components/fan/index.html#base-fan-configuration)*",
+              "key": "Optional"
+            },
             "id": {
               "docs": "**, string**: Manually specify the ID for code generation. At least one of **id** and **name** must be specified.\n\n*See also: [Fan Component](https://esphome.io/components/fan/index.html#base-fan-configuration)*",
               "id_type": {
