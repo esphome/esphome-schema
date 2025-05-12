@@ -1,0 +1,97 @@
+name: Generate Schemas
+run-name: Generate ${{ contains(inputs.version, 'dev') && 'dev' || inputs.version }} Schemas
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "ESPHome version"
+        required: true
+        type: string
+
+jobs:
+  generate-schemas:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout esphome-schema repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        id: python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+      - name: Checkout esphome repo
+        uses: actions/checkout@v4
+        with:
+          repository: esphome/esphome
+          path: esphome
+          ref: ${{ contains(inputs.version, 'dev') && 'dev' || inputs.version }}
+          fetch-depth: 1
+
+      - name: Install ESPHome dependencies
+        working-directory: esphome
+        run: |
+          pip install uv
+          uv pip install -r requirements.txt -r requirements_test.txt
+          uv pip install -e .
+
+      - name: Generate language schema
+        run: python esphome/script/build_language_schema.py --output-path=./schema
+
+      - name: Checkout esphome repo
+        uses: actions/checkout@v4
+        with:
+          repository: esphome/esphome-docs
+          path: esphome-docs
+          ref: ${{ contains(inputs.version, 'dev') && 'next' || inputs.version }}
+          fetch-depth: 1
+
+      - name: Install ESPHome docs dependencies
+        working-directory: esphome-docs
+        run: pip install -r requirements.txt
+
+      - name: Add docs to language schema
+        working-directory: esphome-docs
+        run: python -m sphinx -a -Dextensions=github,seo,sitemap,schema_doc . _build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: schema
+          path: schema
+
+  upload-schemas:
+    runs-on: ubuntu-24.04
+    needs: generate-schemas
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: schema
+
+      - name: Zip schema
+        run: |
+          zip -r schema.zip schema
+          mv schema.zip schema/schema.zip
+
+      - name: Upload to gh-release
+        uses: softprops/action-gh-release@v2
+        if: ${{ !contains(inputs.version, 'dev') }}
+        with:
+          tag_name: ${{ inputs.version }}
+          files: schema/schema.zip
+          body: |
+            This is the schema for ESPHome version ${{ inputs.version }}.
+            It includes the language schema and the documentation schema.
+
+      - name: Upload files to R2
+        uses: ryand56/r2-upload-action@v1
+        with:
+          r2-account-id: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+          r2-access-key-id: ${{ secrets.CLOUDFLARE_R2_SCHEMA_BUCKET_ACCESS_KEY_ID }}
+          r2-secret-access-key: ${{ secrets.CLOUDFLARE_R2_SCHEMA_BUCKET_SECRET_ACCESS_KEY }}
+          r2-bucket: ${{ secrets.CLOUDFLARE_R2_SCHEMA_BUCKET }}
+          source-dir: schema
+          destination-dir: ${{ contains(inputs.version, 'dev') && 'dev' || inputs.version }}/
