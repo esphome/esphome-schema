@@ -44,7 +44,7 @@ jobs:
         with:
           repository: esphome/esphome
           path: esphome
-          ref: ${{ needs.information.outputs.version }}
+          ref: ${{ contains(needs.information.outputs.version, 'dev') && 'dev' || needs.information.outputs.version }}
           fetch-depth: 1
 
       - name: Install ESPHome dependencies
