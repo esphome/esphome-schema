@@ -30,9 +30,6 @@ jobs:
     runs-on: ubuntu-24.04
     needs: information
     steps:
-      - name: Checkout esphome-schema repo
-        uses: actions/checkout@v4
-
       - name: Set up Python 3.9
         id: python
         uses: actions/setup-python@v5
