@@ -87,6 +87,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: schema
+          path: schema
 
       - name: Zip schema
         run: |
