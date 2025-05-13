@@ -9,9 +9,26 @@ on:
         required: true
         type: string
 
+  pull_request:
+
 jobs:
+  information:
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Version
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=dev" >> $GITHUB_OUTPUT
+          fi
+
   generate-schemas:
     runs-on: ubuntu-24.04
+    needs: information
     steps:
       - name: Checkout esphome-schema repo
         uses: actions/checkout@v4
@@ -27,15 +44,14 @@ jobs:
         with:
           repository: esphome/esphome
           path: esphome
-          ref: ${{ contains(inputs.version, 'dev') && 'dev' || inputs.version }}
+          ref: ${{ contains(needs.information.outputs.version, 'dev') && 'dev' || needs.information.outputs.version }}
           fetch-depth: 1
 
       - name: Install ESPHome dependencies
         working-directory: esphome
         run: |
-          pip install uv
-          uv pip install -r requirements.txt -r requirements_test.txt
-          uv pip install -e .
+          pip install -r requirements.txt -r requirements_test.txt
+          pip install -e .
 
       - name: Generate language schema
         run: python esphome/script/build_language_schema.py --output-path=./schema
@@ -45,7 +61,7 @@ jobs:
         with:
           repository: esphome/esphome-docs
           path: esphome-docs
-          ref: ${{ contains(inputs.version, 'dev') && 'next' || inputs.version }}
+          ref: ${{ contains(needs.information.outputs.version, 'dev') && 'next' || needs.information.outputs.version }}
           fetch-depth: 1
 
       - name: Install ESPHome docs dependencies
@@ -66,6 +82,7 @@ jobs:
     needs: generate-schemas
     permissions:
       contents: write
+    if: github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/download-artifact@v4
         with:
