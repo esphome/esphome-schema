@@ -97,6 +97,7 @@ jobs:
         with:
           tag_name: ${{ inputs.version }}
           files: schema/schema.zip
+          prerelease: ${{ contains(inputs.version, 'b') }}
           body: |
             This is the schema for ESPHome version ${{ inputs.version }}.
             It includes the language schema and the documentation schema.
