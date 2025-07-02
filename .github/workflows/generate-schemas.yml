@@ -30,11 +30,11 @@ jobs:
     runs-on: ubuntu-24.04
     needs: information
     steps:
-      - name: Set up Python 3.9
+      - name: Set up Python 3.12
         id: python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.12
 
       - name: Checkout esphome repo
         uses: actions/checkout@v4
