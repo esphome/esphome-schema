@@ -53,7 +53,7 @@ jobs:
       - name: Generate language schema
         run: python esphome/script/build_language_schema.py --output-path=./schema
 
-      - name: Checkout esphome repo
+      - name: Checkout esphome-docs repo
         uses: actions/checkout@v4
         with:
           repository: esphome/esphome-docs
@@ -67,7 +67,16 @@ jobs:
 
       - name: Add docs to language schema
         working-directory: esphome-docs
-        run: python -m sphinx -a -Dextensions=github,seo,sitemap,schema_doc . _build
+        run: |
+          if [[ "${{ contains(needs.information.outputs.version, 'b') }}" == "true" ]]; then
+            DEPLOY_URL="https://beta.esphome.io"
+          elif [[ "${{ contains(needs.information.outputs.version, 'dev') }}" == "true" ]]; then
+            DEPLOY_URL="https://next.esphome.io"
+          else
+            DEPLOY_URL="https://esphome.io"
+          fi
+
+          python script/schema_doc.py ../schema --deploy-url "$DEPLOY_URL" --debug-level 5
 
       - uses: actions/upload-artifact@v4
         with:
