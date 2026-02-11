@@ -61,10 +61,6 @@ jobs:
           ref: ${{ contains(needs.information.outputs.version, 'dev') && 'next' || needs.information.outputs.version }}
           fetch-depth: 1
 
-      - name: Install ESPHome docs dependencies
-        working-directory: esphome-docs
-        run: pip install -r requirements.txt
-
       - name: Add docs to language schema
         working-directory: esphome-docs
         run: |
