@@ -32,12 +32,12 @@ jobs:
     steps:
       - name: Set up Python 3.12
         id: python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5.6.0
         with:
           python-version: 3.12
 
       - name: Checkout esphome repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4.3.1
         with:
           repository: esphome/esphome
           path: esphome
@@ -54,7 +54,7 @@ jobs:
         run: python esphome/script/build_language_schema.py --output-path=./schema
 
       - name: Checkout esphome-docs repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4.3.1
         with:
           repository: esphome/esphome-docs
           path: esphome-docs
@@ -74,7 +74,7 @@ jobs:
 
           python script/schema_doc.py ../schema --deploy-url "$DEPLOY_URL" --debug-level 5
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: schema
           path: schema
@@ -86,7 +86,7 @@ jobs:
       contents: write
     if: github.event_name == 'workflow_dispatch'
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
         with:
           name: schema
           path: schema
@@ -97,7 +97,7 @@ jobs:
           mv schema.zip schema/schema.zip
 
       - name: Upload to gh-release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65  # v2.6.2
         if: ${{ !contains(inputs.version, 'dev') }}
         with:
           tag_name: ${{ inputs.version }}
@@ -108,7 +108,7 @@ jobs:
             It includes the language schema and the documentation schema.
 
       - name: Upload files to R2
-        uses: ryand56/r2-upload-action@v1
+        uses: ryand56/r2-upload-action@b801a390acbdeb034c5e684ff5e1361c06639e7c  # v1.4
         with:
           r2-account-id: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
           r2-access-key-id: ${{ secrets.CLOUDFLARE_R2_SCHEMA_BUCKET_ACCESS_KEY_ID }}
