@@ -53,12 +53,32 @@ jobs:
       - name: Generate language schema
         run: python esphome/script/build_language_schema.py --output-path=./schema
 
+      - name: Resolve esphome.io ref
+        id: docs-ref
+        # The docs tag is pushed separately from the esphome release and can
+        # lag it; fall back to the release branch when the tag isn't there yet.
+        env:
+          VERSION: ${{ needs.information.outputs.version }}
+        run: |
+          set -euo pipefail
+          if [[ "$VERSION" == *dev* ]]; then
+            ref="next"
+          elif git ls-remote --exit-code https://github.com/esphome/esphome.io "refs/tags/$VERSION" >/dev/null; then
+            ref="$VERSION"
+          elif [[ "$VERSION" == *b* ]]; then
+            ref="beta"
+          else
+            ref="current"
+          fi
+          echo "Using esphome.io ref: $ref"
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+
       - name: Checkout esphome.io repo
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
         with:
           repository: esphome/esphome.io
           path: esphome.io
-          ref: ${{ contains(needs.information.outputs.version, 'dev') && 'next' || needs.information.outputs.version }}
+          ref: ${{ steps.docs-ref.outputs.ref }}
           fetch-depth: 1
 
       - name: Add docs to language schema
