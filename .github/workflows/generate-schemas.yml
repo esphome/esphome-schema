@@ -58,7 +58,10 @@ jobs:
         with:
           repository: esphome/esphome.io
           path: esphome.io
-          ref: ${{ contains(needs.information.outputs.version, 'dev') && 'next' || needs.information.outputs.version }}
+          # The docs tag is pushed separately from the esphome release and can
+          # lag it; the release branch gets the version bump before this
+          # workflow runs, so check out the branch instead of the tag.
+          ref: ${{ contains(needs.information.outputs.version, 'dev') && 'next' || (contains(needs.information.outputs.version, 'b') && 'beta' || 'current') }}
           fetch-depth: 1
 
       - name: Add docs to language schema
