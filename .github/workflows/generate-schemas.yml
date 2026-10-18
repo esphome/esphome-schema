@@ -29,6 +29,8 @@ jobs:
   generate-schemas:
     runs-on: ubuntu-24.04
     needs: information
+    env:
+      DEPLOY_URL: ${{ contains(needs.information.outputs.version, 'b') && 'https://beta.esphome.io' || (contains(needs.information.outputs.version, 'dev') && 'https://next.esphome.io' || 'https://esphome.io') }}
     steps:
       - name: Set up Python 3.12
         id: python
@@ -64,7 +66,11 @@ jobs:
           ref: ${{ contains(needs.information.outputs.version, 'dev') && 'next' || (contains(needs.information.outputs.version, 'b') && 'beta' || 'current') }}
           fetch-depth: 1
 
+      # esphome/esphome.io#7750 replaces script/schema_doc.py with a
+      # remark-based generator; keep the python path until every docs branch
+      # this workflow checks out carries the new script.
       - name: Set up Node.js
+        if: hashFiles('esphome.io/script/schema_doc.mjs') != ''
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
         with:
           node-version-file: esphome.io/.node-version
@@ -72,21 +78,19 @@ jobs:
           cache-dependency-path: esphome.io/package-lock.json
 
       - name: Install esphome.io dependencies
+        if: hashFiles('esphome.io/script/schema_doc.mjs') != ''
         working-directory: esphome.io
         run: npm ci --no-audit --no-fund
 
       - name: Add docs to language schema
+        if: hashFiles('esphome.io/script/schema_doc.mjs') != ''
         working-directory: esphome.io
-        run: |
-          if [[ "${{ contains(needs.information.outputs.version, 'b') }}" == "true" ]]; then
-            DEPLOY_URL="https://beta.esphome.io"
-          elif [[ "${{ contains(needs.information.outputs.version, 'dev') }}" == "true" ]]; then
-            DEPLOY_URL="https://next.esphome.io"
-          else
-            DEPLOY_URL="https://esphome.io"
-          fi
+        run: node script/schema_doc.mjs --schema-dir ../schema --emit ../schema --deploy-url "$DEPLOY_URL"
 
-          node script/schema_doc.mjs --schema-dir ../schema --emit ../schema --deploy-url "$DEPLOY_URL"
+      - name: Add docs to language schema (schema_doc.py)
+        if: hashFiles('esphome.io/script/schema_doc.mjs') == ''
+        working-directory: esphome.io
+        run: python script/schema_doc.py ../schema --deploy-url "$DEPLOY_URL" --debug-level 5
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
         with:
