@@ -68,6 +68,12 @@ jobs:
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
         with:
           node-version-file: esphome.io/.node-version
+          cache: npm
+          cache-dependency-path: esphome.io/package-lock.json
+
+      - name: Install esphome.io dependencies
+        working-directory: esphome.io
+        run: npm ci --no-audit --no-fund
 
       - name: Add docs to language schema
         working-directory: esphome.io
@@ -80,15 +86,7 @@ jobs:
             DEPLOY_URL="https://esphome.io"
           fi
 
-          # esphome/esphome.io#7750 replaces script/schema_doc.py with a
-          # remark-based generator; keep the python path until every docs
-          # branch this workflow checks out carries the new script.
-          if [[ -f script/schema_doc.mjs ]]; then
-            npm ci --no-audit --no-fund
-            node script/schema_doc.mjs --schema-dir ../schema --emit ../schema --deploy-url "$DEPLOY_URL"
-          else
-            python script/schema_doc.py ../schema --deploy-url "$DEPLOY_URL" --debug-level 5
-          fi
+          node script/schema_doc.mjs --schema-dir ../schema --emit ../schema --deploy-url "$DEPLOY_URL"
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
         with:
