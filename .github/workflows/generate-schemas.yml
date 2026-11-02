@@ -104,7 +104,7 @@ jobs:
       contents: write
     if: github.event_name == 'workflow_dispatch'
     steps:
-      - uses: actions/download-artifact@v8.0.1
+      - uses: actions/download-artifact@v8.0.2
         with:
           name: schema
           path: schema
