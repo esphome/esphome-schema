@@ -34,12 +34,12 @@ jobs:
     steps:
       - name: Set up Python 3.12
         id: python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: 3.12
 
       - name: Checkout esphome repo
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           repository: esphome/esphome
           path: esphome
@@ -56,7 +56,7 @@ jobs:
         run: python esphome/script/build_language_schema.py --output-path=./schema
 
       - name: Checkout esphome.io repo
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           repository: esphome/esphome.io
           path: esphome.io
@@ -71,7 +71,7 @@ jobs:
       # this workflow checks out carries the new script.
       - name: Set up Node.js
         if: hashFiles('esphome.io/script/schema_doc.mjs') != ''
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version-file: esphome.io/.node-version
           cache: npm
@@ -92,7 +92,7 @@ jobs:
         working-directory: esphome.io
         run: python script/schema_doc.py ../schema --deploy-url "$DEPLOY_URL" --debug-level 5
 
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+      - uses: actions/upload-artifact@v7.0.1
         with:
           name: schema
           path: schema
@@ -104,7 +104,7 @@ jobs:
       contents: write
     if: github.event_name == 'workflow_dispatch'
     steps:
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+      - uses: actions/download-artifact@v8.0.1
         with:
           name: schema
           path: schema
@@ -115,7 +115,7 @@ jobs:
           mv schema.zip schema/schema.zip
 
       - name: Upload to gh-release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228  # v3.0.2
+        uses: softprops/action-gh-release@v3.0.2
         if: ${{ !contains(inputs.version, 'dev') }}
         with:
           tag_name: ${{ inputs.version }}
@@ -126,7 +126,7 @@ jobs:
             It includes the language schema and the documentation schema.
 
       - name: Upload files to R2
-        uses: ryand56/r2-upload-action@b801a390acbdeb034c5e684ff5e1361c06639e7c  # v1.4
+        uses: ryand56/r2-upload-action@v1.4
         with:
           r2-account-id: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
           r2-access-key-id: ${{ secrets.CLOUDFLARE_R2_SCHEMA_BUCKET_ACCESS_KEY_ID }}
